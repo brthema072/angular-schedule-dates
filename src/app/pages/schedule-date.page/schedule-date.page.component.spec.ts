@@ -8,7 +8,7 @@ describe('ScheduleDatePageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ScheduleDatePageComponent]
+      declarations: [ScheduleDatePageComponent],
     });
     fixture = TestBed.createComponent(ScheduleDatePageComponent);
     component = fixture.componentInstance;
