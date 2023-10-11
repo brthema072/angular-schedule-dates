@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
 
 @Component({
   selector: 'schedule-date.page',
@@ -9,33 +10,9 @@ export class ScheduleDatePageComponent implements OnInit {
   currentDay: string = new Date().toISOString();
   workHours: string[] = [];
 
+  constructor(private workHoursFacade: WorkHoursFacade) {}
+
   ngOnInit(): void {
-    this.buildHoursOfWork();
-  }
-
-  buildHoursOfWork() {
-    const initTime: number = 8;
-    const finalizaeWork: number = 17;
-
-    for (let i = initTime; i <= finalizaeWork; i++) {
-      this.workHours.push(this.formatHours(i));
-      this.workHours.push(this.formatHalfHours(i));
-    }
-  }
-
-  private formatHours(hour: number): string {
-    if (hour <= 9) {
-      return '0' + hour + ':00';
-    }
-
-    return hour + ':00';
-  }
-
-  private formatHalfHours(hour: number): string {
-    if (hour <= 9) {
-      return '0' + hour + ':30';
-    }
-
-    return hour + ':30';
+    this.workHours = this.workHoursFacade.buildHoursOfWork();
   }
 }

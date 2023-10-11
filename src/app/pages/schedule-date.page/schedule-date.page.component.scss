@@ -44,7 +44,11 @@
         height: 100%;
 
         .hour {
-          padding: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50%;
+          padding: 5px 12px;
           margin: 5px 0;
           background-color: aquamarine;
           border-radius: 8px;
