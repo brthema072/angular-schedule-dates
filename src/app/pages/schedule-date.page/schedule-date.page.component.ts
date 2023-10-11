@@ -8,7 +8,7 @@ import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
 })
 export class ScheduleDatePageComponent implements OnInit {
   currentDay: string = new Date().toLocaleDateString('pt-Br');
-  workDays: string[] = [
+  workDaysByWeek: string[] = [
     'Segunda-feira',
     'Terça-feira',
     'Quarta-feira',
@@ -16,6 +16,7 @@ export class ScheduleDatePageComponent implements OnInit {
     'Sexta-feira',
     'Sábado',
   ];
+  workDaysByMonth: string[] = [];
   workHours: string[] = [];
 
   constructor(private workHoursFacade: WorkHoursFacade) {}
@@ -36,7 +37,7 @@ export class ScheduleDatePageComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      const day = this.workDays[date.getDay()];
+      const day = this.workDaysByWeek[date.getDay()];
 
       const formattedDate = date.toLocaleDateString('pt-Br');
 
@@ -46,12 +47,15 @@ export class ScheduleDatePageComponent implements OnInit {
     nextSevenDays = nextSevenDays
       .filter((element) => element.day != undefined)
       .sort(
-        (a, b) => this.workDays.indexOf(a.day) - this.workDays.indexOf(b.day)
+        (a, b) =>
+          this.workDaysByWeek.indexOf(a.day) -
+          this.workDaysByWeek.indexOf(b.day)
       );
-    console.log(nextSevenDays);
+
+    this.workDaysByMonth = nextSevenDays.map((element) => element.date);
   }
 
   getWeekDayName(): string {
-    return this.workDays[new Date().getDay() - 1];
+    return this.workDaysByWeek[new Date().getDay() - 1];
   }
 }
