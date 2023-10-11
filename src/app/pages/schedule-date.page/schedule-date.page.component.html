@@ -7,8 +7,10 @@
       class="schedule-week-days-day"
       *ngFor="let weekDay of workDaysByWeek; let i = index"
     >
-      {{ weekDay }}
-      {{ workDaysByMonth[i] }}
+      <div class="schedule-week-days-day-header">
+        <span>{{ weekDay }}</span>
+        <span>{{ workDaysByMonth[i] }}</span>
+      </div>
       <div
         class="schedule-week-days-day-hours"
         *ngFor="let workHour of workHours"
