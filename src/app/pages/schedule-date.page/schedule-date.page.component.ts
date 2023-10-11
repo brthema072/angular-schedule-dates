@@ -16,4 +16,8 @@ export class ScheduleDatePageComponent implements OnInit {
   ngOnInit(): void {
     this.workHours = this.workHoursFacade.buildHoursOfWork();
   }
+
+  schedule(hour: string) {
+    console.log(hour);
+  }
 }
