@@ -1,10 +1,10 @@
 <section class="schedule">
   <div class="schedule-info-day">
-    <h2>data de hoje</h2>
+    <h2>{{ getWeekDayName() + " - " + currentDay }}</h2>
   </div>
   <div class="schedule-week-days">
-    <div class="schedule-week-days-day" *ngFor="let workDay of workDays">
-      {{ workDay }}
+    <div class="schedule-week-days-day" *ngFor="let weekDay of weekDays">
+      {{ weekDay }}
       <div
         class="schedule-week-days-day-hours"
         *ngFor="let workHour of workHours"

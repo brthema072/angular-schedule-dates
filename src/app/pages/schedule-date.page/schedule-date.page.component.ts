@@ -7,8 +7,8 @@ import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
   styleUrls: ['./schedule-date.page.component.scss'],
 })
 export class ScheduleDatePageComponent implements OnInit {
-  currentDay: string = new Date().toISOString();
-  workDays: string[] = [
+  currentDay: string = new Date().toLocaleDateString('pt-Br');
+  weekDays: string[] = [
     'Segunda-feira',
     'Terça-feira',
     'Quarta-feira',
@@ -37,7 +37,7 @@ export class ScheduleDatePageComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      const day = this.workDays[date.getDay()];
+      const day = this.weekDays[date.getDay()];
 
       const formattedDate = `${date.getDate()}/${
         date.getMonth() + 1
@@ -46,6 +46,10 @@ export class ScheduleDatePageComponent implements OnInit {
       nextSevenDays.push({ day, date: formattedDate });
     }
 
-    console.log(nextSevenDays);
+    // console.log(nextSevenDays);
+  }
+
+  getWeekDayName(): string {
+    return this.weekDays[new Date().getDay() - 1];
   }
 }
