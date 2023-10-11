@@ -3,8 +3,8 @@
     <h2>data de hoje</h2>
   </div>
   <div class="schedule-week-days">
-    <div class="schedule-week-days-day">
-      dia 1
+    <div class="schedule-week-days-day" *ngFor="let workDay of workDays">
+      dia {{ workDay }}
       <div
         class="schedule-week-days-day-hours"
         *ngFor="let workHour of workHours"
@@ -12,10 +12,5 @@
         <span class="hour">{{ workHour }}</span>
       </div>
     </div>
-    <div class="schedule-week-days-day">dia 2</div>
-    <div class="schedule-week-days-day">dia 3</div>
-    <div class="schedule-week-days-day">dia 4</div>
-    <div class="schedule-week-days-day">dia 5</div>
-    <div class="schedule-week-days-day">dia 6</div>
   </div>
 </section>

@@ -8,6 +8,7 @@ import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
 })
 export class ScheduleDatePageComponent implements OnInit {
   currentDay: string = new Date().toISOString();
+  workDays: string[] = ['1', '2', '3', '4', '5', '6'];
   workHours: string[] = [];
 
   constructor(private workHoursFacade: WorkHoursFacade) {}
