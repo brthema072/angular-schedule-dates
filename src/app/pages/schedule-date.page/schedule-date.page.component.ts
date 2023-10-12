@@ -34,10 +34,21 @@ export class ScheduleDatePageComponent implements OnInit {
     const today = new Date();
     let nextSevenDays: any[] = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < today.getDay() - 1; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      const day = this.workDaysByWeek[date.getDay()];
+      const day = this.workDaysByWeek[date.getDay() - 1];
+
+      const formattedDate = date.toLocaleDateString('pt-Br');
+
+      nextSevenDays.push({ day, date: formattedDate });
+    }
+
+    for (let i = 1; i <= today.getDay(); i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+
+      const day = this.workDaysByWeek[date.getDay() - 1];
 
       const formattedDate = date.toLocaleDateString('pt-Br');
 
