@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkDaysFacade } from 'src/app/shared/facades/work-days.facade';
 import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
 
 @Component({
@@ -19,51 +20,21 @@ export class ScheduleDatePageComponent implements OnInit {
   workDaysByMonth: string[] = [];
   workHours: string[] = [];
 
-  constructor(private workHoursFacade: WorkHoursFacade) {}
+  constructor(
+    private workHoursFacade: WorkHoursFacade,
+    private workDaysFacade: WorkDaysFacade
+  ) {}
 
   ngOnInit(): void {
-    this.buildWorkDatesForHeader();
+    this.workDaysByMonth = this.workDaysFacade.buildWorkDatesForHeader(
+      this.workDaysByWeek
+    );
+
     this.workHours = this.workHoursFacade.buildHoursOfWork();
   }
 
   schedule(hour: string) {
     console.log(hour);
-  }
-
-  private buildWorkDatesForHeader() {
-    const today = new Date();
-    let nextSevenDays: any[] = [];
-
-    for (let i = 0; i < today.getDay() - 1; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() + i);
-      const day = this.workDaysByWeek[date.getDay() - 1];
-
-      const formattedDate = date.toLocaleDateString('pt-Br');
-
-      nextSevenDays.push({ day, date: formattedDate });
-    }
-
-    for (let i = 1; i <= today.getDay(); i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-
-      const day = this.workDaysByWeek[date.getDay() - 1];
-
-      const formattedDate = date.toLocaleDateString('pt-Br');
-
-      nextSevenDays.push({ day, date: formattedDate });
-    }
-
-    nextSevenDays = nextSevenDays
-      .filter((element) => element.day != undefined)
-      .sort(
-        (a, b) =>
-          this.workDaysByWeek.indexOf(a.day) -
-          this.workDaysByWeek.indexOf(b.day)
-      );
-
-    this.workDaysByMonth = nextSevenDays.map((element) => element.date);
   }
 
   getWeekDayName(): string {

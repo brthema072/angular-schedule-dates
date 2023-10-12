@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { ScheduleDatePageComponent } from './pages/schedule-date.page/schedule-date.page.component';
 import { HomePageComponent } from './pages/home.page/home.page.component';
 import { WorkHoursFacade } from './shared/facades/work-hours.facade';
+import { WorkDaysFacade } from './shared/facades/work-days.facade';
 
 @NgModule({
   declarations: [AppComponent, ScheduleDatePageComponent, HomePageComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [WorkHoursFacade],
+  providers: [WorkHoursFacade, WorkDaysFacade],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
