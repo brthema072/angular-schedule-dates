@@ -5,29 +5,10 @@ export type WorkDays = {
 
 export class WorkDaysFacade {
   buildWorkDatesForHeader(workDaysByWeek: string[]): string[] {
-    const today = new Date();
     let nextSevenDays: WorkDays[] = [];
 
-    for (let i = 0; i < today.getDay() - 1; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() + i);
-      const weekDay = workDaysByWeek[date.getDay() - 1];
-
-      const formattedDate = date.toLocaleDateString('pt-Br');
-
-      nextSevenDays.push({ weekDay, monthDay: formattedDate });
-    }
-
-    for (let i = 1; i <= today.getDay(); i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-
-      const weekDay = workDaysByWeek[date.getDay() - 1];
-
-      const formattedDate = date.toLocaleDateString('pt-Br');
-
-      nextSevenDays.push({ weekDay, monthDay: formattedDate });
-    }
+    nextSevenDays = this.buildWorkDaysAfterDate(workDaysByWeek);
+    this.buildWorkDaysBeforeDate(workDaysByWeek, nextSevenDays);
 
     nextSevenDays = nextSevenDays
       .filter((element) => element.weekDay != undefined)
@@ -37,5 +18,40 @@ export class WorkDaysFacade {
       );
 
     return nextSevenDays.map((element) => element.monthDay);
+  }
+
+  private buildWorkDaysAfterDate(workDaysByWeek: string[]): WorkDays[] {
+    const today = new Date();
+    let nextSixDays: WorkDays[] = [];
+
+    for (let i = 0; i < today.getDay() - 1; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      const weekDay = workDaysByWeek[date.getDay() - 1];
+
+      const formattedDate = date.toLocaleDateString('pt-Br');
+
+      nextSixDays.push({ weekDay, monthDay: formattedDate });
+    }
+
+    return nextSixDays;
+  }
+
+  private buildWorkDaysBeforeDate(
+    workDaysByWeek: string[],
+    nextSixDays: WorkDays[]
+  ) {
+    const today = new Date();
+
+    for (let i = 1; i <= today.getDay(); i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+
+      const weekDay = workDaysByWeek[date.getDay() - 1];
+
+      const formattedDate = date.toLocaleDateString('pt-Br');
+
+      nextSixDays.push({ weekDay, monthDay: formattedDate });
+    }
   }
 }
