@@ -7,9 +7,10 @@ import { ScheduleDatePageComponent } from './pages/schedule-date.page/schedule-d
 import { HomePageComponent } from './pages/home.page/home.page.component';
 import { WorkHoursFacade } from './pages/schedule-date.page/facades/work-hours.facade';
 import { WorkDaysFacade } from './pages/schedule-date.page/facades/work-days.facade';
+import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations: [AppComponent, ScheduleDatePageComponent, HomePageComponent],
+  declarations: [AppComponent, ScheduleDatePageComponent, HomePageComponent, ToolbarComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [WorkHoursFacade, WorkDaysFacade],
   bootstrap: [AppComponent],
