@@ -15,7 +15,9 @@
         class="schedule-week-days-day-hours"
         *ngFor="let workHour of workHours"
       >
-        <span class="hour" (click)="schedule(workHour)">{{ workHour }}</span>
+        <span class="hour" (click)="schedule(workDaysByMonth[i], workHour)">{{
+          workHour
+        }}</span>
       </div>
     </div>
   </div>

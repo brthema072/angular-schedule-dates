@@ -33,8 +33,8 @@ export class ScheduleDatePageComponent implements OnInit {
     this.workHours = this.workHoursFacade.buildHoursOfWork();
   }
 
-  schedule(hour: string) {
-    console.log(hour);
+  schedule(day: string, hour: string) {
+    console.log(day, hour);
   }
 
   getWeekDayName(): string {
