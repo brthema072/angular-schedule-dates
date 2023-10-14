@@ -24,14 +24,17 @@ export class WorkDaysFacade {
     const today = new Date();
     let nextSixDays: WorkDays[] = [];
 
-    for (let i = 0; i < today.getDay() - 1; i++) {
+    let count = 0;
+    for (let i = today.getDay(); i <= 6; i++) {
       const date = new Date(today);
-      date.setDate(today.getDate() + i);
+      date.setDate(today.getDate() + count);
+
       const weekDay = workDaysByWeek[date.getDay() - 1];
 
       const formattedDate = date.toLocaleDateString('pt-Br');
 
       nextSixDays.push({ weekDay, monthDay: formattedDate });
+      count++;
     }
 
     return nextSixDays;
