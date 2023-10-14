@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkDaysFacade } from 'src/app/shared/facades/work-days.facade';
-import { WorkHoursFacade } from 'src/app/shared/facades/work-hours.facade';
+import { WorkDaysFacade } from 'src/app/pages/schedule-date.page/facades/work-days.facade';
+import { WorkHoursFacade } from 'src/app/pages/schedule-date.page/facades/work-hours.facade';
 
 @Component({
   selector: 'schedule-date.page',

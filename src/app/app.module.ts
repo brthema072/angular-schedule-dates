@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScheduleDatePageComponent } from './pages/schedule-date.page/schedule-date.page.component';
 import { HomePageComponent } from './pages/home.page/home.page.component';
-import { WorkHoursFacade } from './shared/facades/work-hours.facade';
-import { WorkDaysFacade } from './shared/facades/work-days.facade';
+import { WorkHoursFacade } from './pages/schedule-date.page/facades/work-hours.facade';
+import { WorkDaysFacade } from './pages/schedule-date.page/facades/work-days.facade';
 
 @NgModule({
   declarations: [AppComponent, ScheduleDatePageComponent, HomePageComponent],
