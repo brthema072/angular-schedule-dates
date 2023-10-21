@@ -9,6 +9,8 @@ import { WorkHoursFacade } from './pages/schedule-date.page/facades/work-hours.f
 import { WorkDaysFacade } from './pages/schedule-date.page/facades/work-days.facade';
 import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
 import { SimpleModalComponent } from './shared/components/simple-modal/simple-modal.component';
+import { LoginPageComponent } from './pages/login.page/login.page.component';
+import { RegisterPageComponent } from './pages/register.page/register.page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { SimpleModalComponent } from './shared/components/simple-modal/simple-mo
     HomePageComponent,
     ToolbarComponent,
     SimpleModalComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [WorkHoursFacade, WorkDaysFacade],
