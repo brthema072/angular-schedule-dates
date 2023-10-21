@@ -12,6 +12,7 @@ import { SimpleModalComponent } from './shared/components/simple-modal/simple-mo
 import { LoginPageComponent } from './pages/login.page/login.page.component';
 import { RegisterPageComponent } from './pages/register.page/register.page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalScheduleDateComponent } from './pages/schedule-date.page/modal-schedule-date/modal-schedule-date.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SimpleModalComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    ModalScheduleDateComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [WorkHoursFacade, WorkDaysFacade],

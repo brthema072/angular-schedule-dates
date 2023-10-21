@@ -1,3 +1,8 @@
+<modal-schedule-date
+  #modal
+  (emitSelectedDate)="schedule($event)"
+></modal-schedule-date>
+
 <section class="schedule">
   <div class="schedule-info-day">
     <h2>{{ getWeekDayName() + " - " + currentDay }}</h2>
@@ -15,7 +20,7 @@
         class="schedule-week-days-day-hours"
         *ngFor="let workHour of workHours"
       >
-        <span class="hour" (click)="schedule(workDaysByMonth[i], workHour)">{{
+        <span class="hour" (click)="openModal(workDaysByMonth[i], workHour)">{{
           workHour
         }}</span>
       </div>

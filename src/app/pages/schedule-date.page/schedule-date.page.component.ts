@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WorkDaysFacade } from 'src/app/pages/schedule-date.page/facades/work-days.facade';
 import { WorkHoursFacade } from 'src/app/pages/schedule-date.page/facades/work-hours.facade';
+import {
+  ModalScheduleDateComponent,
+  SelectedDate,
+} from './modal-schedule-date/modal-schedule-date.component';
 
 @Component({
   selector: 'schedule-date.page',
@@ -8,6 +12,8 @@ import { WorkHoursFacade } from 'src/app/pages/schedule-date.page/facades/work-h
   styleUrls: ['./schedule-date.page.component.scss'],
 })
 export class ScheduleDatePageComponent implements OnInit {
+  @ViewChild('modal') modal!: ModalScheduleDateComponent;
+
   currentDay: string = new Date().toLocaleDateString('pt-Br');
   workDaysByWeek: string[] = [
     'Segunda-feira',
@@ -19,6 +25,9 @@ export class ScheduleDatePageComponent implements OnInit {
   ];
   workDaysByMonth: string[] = [];
   workHours: string[] = [];
+
+  scheduleDay: string = '';
+  scheduleHour: string = '';
 
   constructor(
     private workHoursFacade: WorkHoursFacade,
@@ -33,11 +42,21 @@ export class ScheduleDatePageComponent implements OnInit {
     this.workHours = this.workHoursFacade.buildHoursOfWork();
   }
 
-  schedule(day: string, hour: string) {
-    console.log(day, hour);
+  openModal(day: string, hour: string) {
+    this.modal.selectedDate = `${day} as ${hour}`;
+    this.modal.day = day;
+    this.modal.hour = hour;
+
+    this.modal.simpleModal.open();
   }
 
   getWeekDayName(): string {
     return this.workDaysByWeek[new Date().getDay() - 1];
+  }
+
+  schedule(selectedDate: SelectedDate) {
+    this.scheduleDay = selectedDate.day;
+    this.scheduleHour = selectedDate.hour;
+    console.log(this.scheduleDay, this.scheduleHour);
   }
 }

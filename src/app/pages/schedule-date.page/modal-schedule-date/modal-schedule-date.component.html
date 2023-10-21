@@ -1,0 +1,6 @@
+<simple-modal #simpleModal>
+  <h3 header>Atenção!</h3>
+  <span bodyText>Deseja agendar um horário em {{ selectedDate }}?</span>
+  <button class="no-button" (click)="close()">Não</button>
+  <button class="yes-button" (click)="schedule()">Sim</button>
+</simple-modal>
