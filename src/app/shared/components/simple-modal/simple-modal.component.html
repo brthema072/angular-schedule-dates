@@ -1,21 +1,14 @@
 <dialog #modal class="modal">
   <div class="modal-header">
-    <h3>Atenção!</h3>
+    <ng-content select="[header]"></ng-content>
     <span class="modal-header-close-button" (click)="close()"></span>
   </div>
   <div class="modal-body">
-    <strong>Possui um acesso?</strong>
-    <span
-      >Para agendar um horário é necessário se autenticar ou criar uma
-      conta!</span
-    >
+    <ng-content select="[bodyTitle]"></ng-content>
+    <ng-content select="[bodyText]"></ng-content>
   </div>
   <div class="modal-footer">
-    <button class="modal-footer-btn-login" routerLink="/login">
-      Tenho uma conta
-    </button>
-    <button class="modal-footer-btn-sigin" routerLink="/register">
-      Criar uma conta
-    </button>
+    <ng-content select="button"></ng-content>
+    <ng-content select="button"></ng-content>
   </div>
 </dialog>
