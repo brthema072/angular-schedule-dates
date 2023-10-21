@@ -1,16 +1,17 @@
 <div class="page">
-  <form class="form">
+  <form class="form" [formGroup]="form">
     <div class="form-field">
       <span>E-mail:</span>
-      <input type="email" />
+      <input type="email" formControlName="email" />
     </div>
     <div class="form-field">
       <span>Senha: </span>
-      <input type="password" />
+      <input type="password" formControlName="password" />
+      <small>Senha deve ter no mínimo 6 caracteres</small>
     </div>
 
     <div class="form-action">
-      <button>Acessar</button>
+      <button (click)="submit()" [disabled]="form.invalid">Acessar</button>
     </div>
   </form>
 </div>

@@ -11,6 +11,7 @@ import { ToolbarComponent } from './shared/components/toolbar/toolbar.component'
 import { SimpleModalComponent } from './shared/components/simple-modal/simple-modal.component';
 import { LoginPageComponent } from './pages/login.page/login.page.component';
 import { RegisterPageComponent } from './pages/register.page/register.page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { RegisterPageComponent } from './pages/register.page/register.page.compo
     LoginPageComponent,
     RegisterPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [WorkHoursFacade, WorkDaysFacade],
   bootstrap: [AppComponent],
 })
