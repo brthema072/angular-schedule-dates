@@ -5,6 +5,7 @@ import {
   ModalScheduleDateComponent,
   SelectedDate,
 } from './modal-schedule-date/modal-schedule-date.component';
+import { toggleOption } from 'src/app/shared/components/simple-toggle/simple-toggle.component';
 
 @Component({
   selector: 'schedule-date.page',
@@ -28,6 +29,12 @@ export class ScheduleDatePageComponent implements OnInit {
 
   scheduleDay: string = '';
   scheduleHour: string = '';
+
+  typeDatesToggle: Array<toggleOption> = [
+    { name: 'Semana', value: 0, select: true },
+    { name: 'Mês', value: 1, select: false },
+    { name: 'Ano', value: 2, select: false },
+  ];
 
   constructor(
     private workHoursFacade: WorkHoursFacade,
