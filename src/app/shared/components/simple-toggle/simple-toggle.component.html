@@ -1,0 +1,10 @@
+<div class="toggle">
+  <div
+    class="toggle-option"
+    *ngFor="let option of options"
+    [id]="'option' + option.value"
+    (click)="selectOption(option)"
+  >
+    {{ option.name }}
+  </div>
+</div>
