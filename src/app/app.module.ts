@@ -14,6 +14,9 @@ import { RegisterPageComponent } from './pages/register.page/register.page.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalScheduleDateComponent } from './pages/schedule-date.page/components/modal-schedule-date/modal-schedule-date.component';
 import { SimpleToggleComponent } from './shared/components/simple-toggle/simple-toggle.component';
+import { WeekViewComponent } from './pages/schedule-date.page/components/week-view/week-view.component';
+import { MonthlyViewComponent } from './pages/schedule-date.page/components/monthly-view/monthly-view.component';
+import { YearViewComponent } from './pages/schedule-date.page/components/year-view/year-view.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { SimpleToggleComponent } from './shared/components/simple-toggle/simple-
     RegisterPageComponent,
     ModalScheduleDateComponent,
     SimpleToggleComponent,
+    WeekViewComponent,
+    MonthlyViewComponent,
+    YearViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [WorkHoursFacade, WorkDaysFacade],
