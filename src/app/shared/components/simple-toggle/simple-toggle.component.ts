@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 export type toggleOption = {
   name: string;
@@ -11,11 +18,22 @@ export type toggleOption = {
   templateUrl: './simple-toggle.component.html',
   styleUrls: ['./simple-toggle.component.scss'],
 })
-export class SimpleToggleComponent implements AfterViewInit {
-  @Input() options: Array<toggleOption> = <Array<toggleOption>>{};
+export class SimpleToggleComponent implements OnInit, AfterViewInit {
+  @Input() values: Array<Partial<toggleOption>> = <
+    Array<Partial<toggleOption>>
+  >{};
+  @Output() toggleSelected: EventEmitter<toggleOption> =
+    new EventEmitter<toggleOption>();
+
+  options: Array<toggleOption> = Array<toggleOption>();
+
+  ngOnInit(): void {
+    this.options = this.values as any;
+    this.buildOptionsValue();
+  }
 
   ngAfterViewInit(): void {
-    this.options.forEach((option) => {
+    this.options.forEach((option, index) => {
       this.changeStyle(option);
     });
   }
@@ -32,6 +50,8 @@ export class SimpleToggleComponent implements AfterViewInit {
     this.options.forEach((option) => {
       this.changeStyle(option);
     });
+
+    this.toggleSelected.emit(option);
   }
 
   private changeStyle(option: toggleOption) {
@@ -39,5 +59,11 @@ export class SimpleToggleComponent implements AfterViewInit {
 
     if (option.select) element?.classList.add('select');
     else element?.classList.remove('select');
+  }
+
+  private buildOptionsValue() {
+    this.options.forEach((option, index) => {
+      option.value = index;
+    });
   }
 }

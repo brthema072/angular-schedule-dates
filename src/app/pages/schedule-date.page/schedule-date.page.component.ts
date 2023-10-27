@@ -30,10 +30,10 @@ export class ScheduleDatePageComponent implements OnInit {
   scheduleDay: string = '';
   scheduleHour: string = '';
 
-  typeDatesToggle: Array<toggleOption> = [
-    { name: 'Semana', value: 0, select: true },
-    { name: 'Mês', value: 1, select: false },
-    { name: 'Ano', value: 2, select: false },
+  toggleValues: Array<Partial<toggleOption>> = [
+    { name: 'Semana', select: true },
+    { name: 'Mês', select: false },
+    { name: 'Ano', select: false },
   ];
 
   constructor(
@@ -65,5 +65,9 @@ export class ScheduleDatePageComponent implements OnInit {
     this.scheduleDay = selectedDate.day;
     this.scheduleHour = selectedDate.hour;
     console.log(this.scheduleDay, this.scheduleHour);
+  }
+
+  getToggleSelected(toggle: toggleOption) {
+    console.log(toggle);
   }
 }
