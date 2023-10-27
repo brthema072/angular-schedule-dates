@@ -4,7 +4,7 @@ import { WorkHoursFacade } from 'src/app/pages/schedule-date.page/facades/work-h
 import {
   ModalScheduleDateComponent,
   SelectedDate,
-} from './modal-schedule-date/modal-schedule-date.component';
+} from './components/modal-schedule-date/modal-schedule-date.component';
 import { toggleOption } from 'src/app/shared/components/simple-toggle/simple-toggle.component';
 
 @Component({
