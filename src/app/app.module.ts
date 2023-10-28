@@ -11,7 +11,7 @@ import { ToolbarComponent } from './shared/components/toolbar/toolbar.component'
 import { SimpleModalComponent } from './shared/components/simple-modal/simple-modal.component';
 import { LoginPageComponent } from './pages/login.page/login.page.component';
 import { RegisterPageComponent } from './pages/register.page/register.page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalScheduleDateComponent } from './pages/schedule-date.page/components/modal-schedule-date/modal-schedule-date.component';
 import { SimpleToggleComponent } from './shared/components/simple-toggle/simple-toggle.component';
 import { WeekViewComponent } from './pages/schedule-date.page/components/week-view/week-view.component';
@@ -33,7 +33,7 @@ import { YearViewComponent } from './pages/schedule-date.page/components/year-vi
     MonthlyViewComponent,
     YearViewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [WorkHoursFacade, WorkDaysFacade],
   bootstrap: [AppComponent],
 })
