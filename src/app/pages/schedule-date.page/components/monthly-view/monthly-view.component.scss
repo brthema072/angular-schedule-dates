@@ -11,18 +11,16 @@
     height: 100%;
 
     &-year {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.3s;
+      padding: 6px 0;
       width: 40px;
-      border-radius: 5px;
-    }
 
-    &-year:hover {
-      background-color: aquamarine;
+      select {
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 5px;
+        font-size: 12pt;
+        border: none;
+      }
     }
   }
 }

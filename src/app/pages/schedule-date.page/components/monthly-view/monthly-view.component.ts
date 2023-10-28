@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'monthly-view',
   templateUrl: './monthly-view.component.html',
   styleUrls: ['./monthly-view.component.scss'],
 })
-export class MonthlyViewComponent {
-  selectedYear: number = new Date().getFullYear();
+export class MonthlyViewComponent implements OnInit {
+  currentYear: number = new Date().getFullYear();
 
   months: string[] = [
     'Janeiro',
@@ -22,6 +22,22 @@ export class MonthlyViewComponent {
     'Novembro',
     'Dezembro',
   ];
+
+  years: number[] = [];
+
+  selectedYear: number = 0;
+
+  ngOnInit(): void {
+    this.selectedYear = this.currentYear;
+
+    for (let i = 0; i < 6; i++) {
+      this.years.push(this.currentYear - i);
+    }
+
+    for (let i = 0; i < 6; i++) {
+      this.years.push(this.currentYear + i);
+    }
+  }
 
   selectMonth(index: number) {
     console.log(this.months[index]);
