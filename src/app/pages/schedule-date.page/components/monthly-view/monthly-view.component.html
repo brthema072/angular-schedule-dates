@@ -1,1 +1,14 @@
-<p>monthly-view works!</p>
+<div class="view">
+  <div class="view-header">
+    <h3 class="view-header-year">{{ selectedYear }}</h3>
+  </div>
+  <div class="schedule-months">
+    <div
+      class="schedule-months-month"
+      *ngFor="let month of months; let i = index"
+      (click)="selectMonth(i)"
+    >
+      {{ month }}
+    </div>
+  </div>
+</div>
