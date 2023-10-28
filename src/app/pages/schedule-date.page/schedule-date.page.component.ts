@@ -26,11 +26,13 @@ export class ScheduleDatePageComponent {
     { name: 'Ano', select: false },
   ];
 
+  toggleSelected: toggleOption = this.toggleValues[0] as toggleOption;
+
   getWeekDayName(): string {
     return this.workDaysByWeek[new Date().getDay() - 1];
   }
 
   getToggleSelected(toggle: toggleOption) {
-    console.log(toggle);
+    this.toggleSelected = toggle;
   }
 }

@@ -6,5 +6,9 @@
     ></simple-toggle>
     <h2>{{ getWeekDayName() + " - " + currentDay }}</h2>
   </div>
-  <week-view></week-view>
+  <ng-container [ngSwitch]="toggleSelected.name">
+    <week-view *ngSwitchCase="'Semana'"></week-view>
+    <monthly-view *ngSwitchCase="'Mês'"></monthly-view>
+    <year-view *ngSwitchCase="'Ano'"></year-view>
+  </ng-container>
 </section>
