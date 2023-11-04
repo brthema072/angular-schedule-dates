@@ -30,13 +30,15 @@ export class MonthlyViewComponent implements OnInit {
   ngOnInit(): void {
     this.selectedYear = this.currentYear;
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i <= 6; i++) {
       this.years.push(this.currentYear - i);
     }
 
     for (let i = 0; i < 6; i++) {
       this.years.push(this.currentYear + i);
     }
+
+    this.years = this.years.sort();
   }
 
   selectMonth(index: number) {
