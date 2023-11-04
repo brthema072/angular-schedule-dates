@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { SelectedDate, selections } from './shared/models/selections.model';
 
 @Component({
   selector: 'monthly-view',
@@ -24,8 +26,16 @@ export class MonthlyViewComponent implements OnInit {
   ];
 
   years: number[] = [];
-
   selectedYear: number = 0;
+  selectedMonth: number = 0;
+  showMonthlyView: boolean = true;
+
+  selections: BehaviorSubject<selections> = new BehaviorSubject<selections>({
+    selectedMonth: this.selectedMonth,
+    selectedYear: this.selectedYear,
+  });
+
+  constructor(private selectDate: SelectedDate) {}
 
   ngOnInit(): void {
     this.selectedYear = this.currentYear;
@@ -41,7 +51,17 @@ export class MonthlyViewComponent implements OnInit {
     this.years = this.years.sort();
   }
 
-  selectMonth(index: number) {
-    console.log(this.months[index]);
+  selectMonth(month: number) {
+    this.showMonthlyView = !this.showMonthlyView;
+    this.selectedMonth = month;
+
+    this.selections.next({
+      selectedMonth: this.selectedMonth,
+      selectedYear: this.selectedYear,
+    });
+  }
+
+  showSelectedDate() {
+    console.log(this.selectDate.date);
   }
 }

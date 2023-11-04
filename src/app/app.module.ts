@@ -17,6 +17,7 @@ import { SimpleToggleComponent } from './shared/components/simple-toggle/simple-
 import { WeekViewComponent } from './pages/schedule-date.page/components/week-view/week-view.component';
 import { MonthlyViewComponent } from './pages/schedule-date.page/components/monthly-view/monthly-view.component';
 import { YearViewComponent } from './pages/schedule-date.page/components/year-view/year-view.component';
+import { MonthlyDaysViewComponent } from './pages/schedule-date.page/components/monthly-view/monthly-days-view/monthly-days-view.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { YearViewComponent } from './pages/schedule-date.page/components/year-vi
     WeekViewComponent,
     MonthlyViewComponent,
     YearViewComponent,
+    MonthlyDaysViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [WorkHoursFacade, WorkDaysFacade],

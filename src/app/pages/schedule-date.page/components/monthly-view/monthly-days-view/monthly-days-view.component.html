@@ -1,0 +1,9 @@
+<div class="days-by-month">
+  <div
+    class="days-by-month-day"
+    *ngFor="let day of days"
+    (click)="selectDay(day.getDate())"
+  >
+    {{ day.getDate() }}
+  </div>
+</div>

@@ -8,7 +8,7 @@
       </select>
     </div>
   </div>
-  <div class="schedule-months">
+  <div class="schedule-months" *ngIf="showMonthlyView; else daysView">
     <div
       class="schedule-months-month"
       *ngFor="let month of months; let i = index"
@@ -17,4 +17,10 @@
       {{ month }}
     </div>
   </div>
+  <ng-template #daysView>
+    <monthly-days-view
+      [selections]="selections"
+      (emitMonthlyView)="showMonthlyView = $event; showSelectedDate()"
+    ></monthly-days-view>
+  </ng-template>
 </div>
