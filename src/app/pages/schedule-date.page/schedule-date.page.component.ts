@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { toggleOption } from 'src/app/shared/components/simple-toggle/simple-toggle.component';
+import { ScheduleToggleService } from './services/toggle/schedule-toggle.service';
 
 @Component({
   selector: 'schedule-date.page',
@@ -7,6 +8,8 @@ import { toggleOption } from 'src/app/shared/components/simple-toggle/simple-tog
   styleUrls: ['./schedule-date.page.component.scss'],
 })
 export class ScheduleDatePageComponent {
+  constructor(public scheduleToggleService: ScheduleToggleService) {}
+
   currentDay: string = new Date().toLocaleDateString('pt-Br');
   workDaysByWeek: string[] = [
     'Segunda-feira',
@@ -20,19 +23,11 @@ export class ScheduleDatePageComponent {
   workDaysByMonth: string[] = [];
   workHours: string[] = [];
 
-  toggleValues: Array<Partial<toggleOption>> = [
-    { name: 'Semana', select: true },
-    { name: 'Mês', select: false },
-    { name: 'Ano', select: false },
-  ];
-
-  toggleSelected: toggleOption = this.toggleValues[0] as toggleOption;
-
   getWeekDayName(): string {
     return this.workDaysByWeek[new Date().getDay() - 1];
   }
 
   getToggleSelected(toggle: toggleOption) {
-    this.toggleSelected = toggle;
+    this.scheduleToggleService.toggleSelected = toggle;
   }
 }

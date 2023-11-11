@@ -1,12 +1,12 @@
 <section class="schedule">
   <div class="schedule-info-day">
     <simple-toggle
-      [values]="toggleValues"
+      [values]="scheduleToggleService.toggleValues"
       (toggleSelected)="getToggleSelected($event)"
     ></simple-toggle>
     <h2>{{ getWeekDayName() + " - " + currentDay }}</h2>
   </div>
-  <ng-container [ngSwitch]="toggleSelected.name">
+  <ng-container [ngSwitch]="scheduleToggleService.toggleSelected.name">
     <week-view *ngSwitchCase="'Semana'"></week-view>
     <monthly-view *ngSwitchCase="'Mês'"></monthly-view>
     <year-view *ngSwitchCase="'Ano'"></year-view>

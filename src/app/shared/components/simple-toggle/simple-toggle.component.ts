@@ -5,7 +5,9 @@ import {
   Input,
   OnInit,
   Output,
+  effect,
 } from '@angular/core';
+import { SimpleToggleService } from '../../services/simple-toggle/simple-toggle.service';
 
 export type toggleOption = {
   name: string;
@@ -26,6 +28,13 @@ export class SimpleToggleComponent implements OnInit, AfterViewInit {
     new EventEmitter<toggleOption>();
 
   options: Array<toggleOption> = Array<toggleOption>();
+
+  constructor(private simpleToggleService: SimpleToggleService) {
+    effect(() => {
+      if (Object.keys(this.simpleToggleService.toggleSelected()).length)
+        this.selectOptionByEffect(this.simpleToggleService.toggleSelected());
+    });
+  }
 
   ngOnInit(): void {
     this.options = this.values as any;
@@ -65,5 +74,21 @@ export class SimpleToggleComponent implements OnInit, AfterViewInit {
     this.options.forEach((option, index) => {
       option.value = index;
     });
+  }
+
+  private selectOptionByEffect(option: toggleOption) {
+    const otherOptions = this.options.filter((opt) => opt.name != option.name);
+
+    otherOptions.forEach((otherOption) => {
+      otherOption.select = false;
+    });
+
+    this.options.forEach((opt) => {
+      if (opt.name == option.name) opt.select = option.select;
+
+      this.changeStyle(opt);
+    });
+
+    this.toggleSelected.emit(option);
   }
 }
