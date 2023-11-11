@@ -53,4 +53,8 @@ export class MonthlyDaysViewComponent implements OnInit {
   private changeToMonthlyView() {
     this.emitMonthlyView.emit(true);
   }
+
+  backView() {
+    this.emitMonthlyView.emit(true);
+  }
 }
