@@ -18,6 +18,7 @@ import { WeekViewComponent } from './pages/schedule-date.page/components/week-vi
 import { MonthlyViewComponent } from './pages/schedule-date.page/components/monthly-view/monthly-view.component';
 import { YearViewComponent } from './pages/schedule-date.page/components/year-view/year-view.component';
 import { MonthlyDaysViewComponent } from './pages/schedule-date.page/components/monthly-view/monthly-days-view/monthly-days-view.component';
+import { FormatDateFacade } from './shared/facades/format-date.facade';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { MonthlyDaysViewComponent } from './pages/schedule-date.page/components/
     MonthlyDaysViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
-  providers: [WorkHoursFacade, WorkDaysFacade],
+  providers: [WorkHoursFacade, WorkDaysFacade, FormatDateFacade],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
