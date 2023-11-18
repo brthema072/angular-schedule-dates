@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SelectedDate, selections } from '../shared/models/selections.model';
 import { ScheduleToggleService } from '../../../services/toggle/schedule-toggle.service';
+import { ScheduleService } from '../../../services/schedule/schedule.service';
 
 @Component({
   selector: 'monthly-days-view',
@@ -23,7 +24,8 @@ export class MonthlyDaysViewComponent implements OnInit {
 
   constructor(
     private selectedDate: SelectedDate,
-    private scheduleToggleService: ScheduleToggleService
+    private scheduleToggleService: ScheduleToggleService,
+    private scheduleService: ScheduleService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,8 @@ export class MonthlyDaysViewComponent implements OnInit {
       this.selectedMonth,
       day
     );
+
+    this.scheduleService.selectedDay = day;
 
     this.changeToMonthlyView();
   }

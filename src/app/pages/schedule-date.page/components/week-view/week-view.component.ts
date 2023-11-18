@@ -5,6 +5,7 @@ import {
 } from '../modal-schedule-date/modal-schedule-date.component';
 import { WorkDaysFacade } from '../../facades/work-days.facade';
 import { WorkHoursFacade } from '../../facades/work-hours.facade';
+import { ScheduleService } from '../../services/schedule/schedule.service';
 
 @Component({
   selector: 'week-view',
@@ -31,7 +32,8 @@ export class WeekViewComponent implements OnInit {
 
   constructor(
     private workHoursFacade: WorkHoursFacade,
-    private workDaysFacade: WorkDaysFacade
+    private workDaysFacade: WorkDaysFacade,
+    private scheduleService: ScheduleService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,8 @@ export class WeekViewComponent implements OnInit {
     );
 
     this.workHours = this.workHoursFacade.buildHoursOfWork();
+
+    console.log(this.scheduleService.buildDateToSpLocale());
   }
 
   openModal(day: string, hour: string) {
