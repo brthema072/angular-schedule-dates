@@ -1,6 +1,10 @@
 <div class="view">
   <div class="view-years">
-    <div class="view-years-year" *ngFor="let year of years">
+    <div
+      class="view-years-year"
+      *ngFor="let year of years"
+      (click)="selectYear(year)"
+    >
       {{ year }}
     </div>
   </div>

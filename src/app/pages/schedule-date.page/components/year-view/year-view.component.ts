@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScheduleToggleService } from '../../services/toggle/schedule-toggle.service';
 
 @Component({
   selector: 'year-view',
@@ -10,6 +11,8 @@ export class YearViewComponent implements OnInit {
 
   years: number[] = [];
   selectedYear: number = 0;
+
+  constructor(private scheduleToggleService: ScheduleToggleService) {}
 
   ngOnInit(): void {
     this.selectedYear = this.currentYear;
@@ -23,5 +26,10 @@ export class YearViewComponent implements OnInit {
     }
 
     this.years = this.years.sort();
+  }
+
+  selectYear(year: number) {
+    console.log(year);
+    this.scheduleToggleService.chooseMonthToggle();
   }
 }
